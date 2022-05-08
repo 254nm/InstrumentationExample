@@ -35,7 +35,6 @@ public class Main {
             String nameOfRunningVM = ManagementFactory.getRuntimeMXBean().getName();
             String pid = nameOfRunningVM.substring(0, nameOfRunningVM.indexOf('@'));
             String javaPath = System.getProperty("java.home") + "/bin/java"; //The java in $PATH might be a different version than the one we want
-            System.out.println(javaPath);
             //Spawn a new java process to attach the java agent to our current JVM because the JVM doesn't allow us to directly attach our own JVM
             Process process = new ProcessBuilder(javaPath, "-jar", getSelf().getAbsolutePath(), pid).start();
             process.waitFor();
